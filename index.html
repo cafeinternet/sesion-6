@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- libreria que toca llamar siempre para que funcione el aframe -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js "></script>
+
+    <!-- libreria para que reconozcoa un objeto 3d con animacion -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+
+    <!-- libreria para generar texto 3d -->
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script> 
+   
+   <!-- libreria de texturas hiperrralistas -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe-enviropacks@0.9.0/aframe-enviropacks.js"></script>
+
+    
+</head>
+<body>
+    <a-scene  >
+        <a-assets>
+          <!-- objeto con animacion y bug de textueras -->
+            <a-asset-item id="zuk" src="./zukky.gltf"></a-asset-item>
+            
+            <!-- las tipografia tienen que ser formato js  -->
+            <a-asset-item id="optimerBoldFont" src="./uuuur.json"></a-asset-item>
+            <a-mixin id="boldFont" text="font: #optimerBoldFont"></a-mixin>
+
+          </a-assets>
+          <!-- obj animado -->
+      <a-entity gltf-model="#zuk" animation-mixer position="1 0 -4"></a-entity>
+      <a-entity gltf-model="./zukky.gltf" enviropack-material="material: gold" animation-mixer="" position="1 0 2.08076"></a-entity>
+   
+      <!-- <a-entity enviropack="preset: sandstone"></a-entity>  -->
+         <a-box position="-1 0.5 -3" rotation="0 45 0" shadow enviropack-material="material: gold"></a-box>
+        <a-sphere position="0 2.25 -5" radius="1.25" enviropack-material="material: gold" shadow></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5"  enviropack-material="material: gold" shadow></a-cylinder>
+
+        <!-- <a-cone enviropack-material="material: concrete" radius-bottom="2" radius-top="0.5"></a-cone> -->
+
+        <a-dodecahedron enviropack-material="material: gold" radius="5" position="1 0 -16"></a-dodecahedron>
+        <!-- <a-entity text-geometry="value: Ultima sesion; font: #optimerBoldFont ; size:2;  height: 2; bevelEnabled: true; bevelSize: 0.04; bevelThickness: 0.04; curveSegments: 1" enviropack-material="material: gold"  ></a-entity> --> -->
+
+        <a-entity geometry="primitive: plane"
+          material="shader: ocean; color: blue; wave-height: 14" position="1 .5 1"></a-entity>
+
+          <a-ocean color="#92E2E2" width="25" depth="25" density="15" speed="2"></a-ocean>
+          <a-entity id="ocean" ocean="density: 20; width: 50; depth: 50; speed: 4" material="color: #A583F3; opacity: 0.5; metalness: 0; roughness: 1" rotation="-90 0 0" scale="3 3 3"></a-entity>
+
+      </a-scene>
+</body>
+</html>
